@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Test Page</title>
+    <meta name="description" content="Test page">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <script src="./moment.js"></script>
+    <script src="./moment-timezone-with-data.js"></script>
+
+    <script>
+
+        createTopic = function(title, subjects) {
+            let block = null;
+
+            return block;
+        };
+
+        function timeDisplay(selector, timeZoneName){
+            var text = moment().tz(timeZoneName).format('hh:mm A');
+
+            $(selector).text(text);
+
+            console.log(selector + ' - ' + timeZoneName + ' : ' + text);
+
+            setTimeout(
+                () => timeDisplay(selector, timeZoneName)
+                , 3000
+            );
+
+        }
+
+
+        window.onload = function () {
+
+            timeDisplay('.est', 'America/New_York');
+            timeDisplay('.gmt', 'Europe/London');
+            timeDisplay('.pdt', 'America/Los_Angeles');
+        };
+
+    </script>
+</head>
+
+<body>
+    <h1>What time is it out there?</h1>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">RDA Headquarters</h5>
+                        <h6 class="card-subtitle text-muted">Maryland</h6>
+                        <span class="clock est" id="rda"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Aidan Grace</h5>
+                        <h6 class="card-subtitle text-muted">London</h6>
+                        <span class="clock gmt" id="aidan"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">C &amp; M</h5>
+                        <h6 class="card-subtitle text-muted">Los Angeles</h6>
+                        <span class="clock pdt" id="losangeles"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<style>
+    body {
+        background: black;
+    }
+
+    h1 {
+        text-align: center;
+        color: white;
+        font-family: Orbitron;
+        margin: 30px;
+    }
+
+    .card {
+        background: floralwhite;
+    }
+
+    .clock {
+        color: darkslateblue;
+        font-family: Orbitron;
+        font-size: 40px;
+        letter-spacing: 5px;
+    }
+</style>
+
+</html>
